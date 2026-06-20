@@ -1,0 +1,115 @@
+.contact {
+  position: relative;
+  background: var(--black);
+  padding-block: clamp(4rem, 11vw, 8rem);
+  overflow: hidden;
+}
+
+.contact__slash {
+  position: absolute;
+  top: 38%;
+  left: -8%;
+  width: 116%;
+  height: clamp(90px, 16vw, 200px);
+  background: var(--yellow);
+  transform: rotate(-6deg);
+  clip-path: polygon(0 30%, 100% 0, 100% 70%, 0 100%);
+  opacity: 0.18;
+}
+
+.contact__inner {
+  position: relative;
+  z-index: var(--z-base);
+}
+
+.contact__pre {
+  font-size: var(--step-2);
+  color: var(--red-bright);
+  margin-bottom: 0.4rem;
+}
+
+.contact__title {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: var(--display);
+  line-height: 0.82;
+  letter-spacing: 0.01em;
+  color: var(--red);
+  -webkit-text-stroke: clamp(1px, 0.3vw, 3px) var(--ink);
+  text-shadow: clamp(3px, 0.6vw, 8px) clamp(3px, 0.6vw, 8px) 0 var(--black-soft);
+  transform: skewX(-5deg);
+}
+
+.contact__lede {
+  max-width: 44ch;
+  font-size: var(--step-1);
+  line-height: 1.5;
+  color: var(--muted);
+  margin-top: clamp(1rem, 3vw, 1.8rem);
+}
+
+.contact__arrow {
+  color: var(--yellow);
+  font-family: "Permanent Marker", cursive;
+}
+
+.contact__links {
+  list-style: none;
+  padding: 0;
+  margin-top: clamp(1.8rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 2px solid var(--black-hud);
+}
+
+@media (min-width: 720px) {
+  .contact__links {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.contact__links a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: clamp(0.9rem, 2.5vw, 1.4rem) 0.2rem;
+  border-bottom: 2px solid var(--black-hud);
+  transition: transform var(--dur-ui) var(--ease-out),
+    color var(--dur-ui) var(--ease-out);
+}
+
+.contact__links a:hover,
+.contact__links a:focus-visible {
+  transform: translateX(0.8rem);
+  color: var(--yellow);
+}
+
+.contact__link-label {
+  font-family: "Anton", sans-serif;
+  text-transform: uppercase;
+  font-size: var(--step-2);
+}
+
+.contact__link-handle {
+  font-family: "JetBrains Mono", monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.contact__foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.5rem;
+  justify-content: space-between;
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact__links a {
+    transition: none;
+  }
+}

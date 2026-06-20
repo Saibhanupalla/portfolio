@@ -1,0 +1,76 @@
+.about {
+  background: var(--black);
+  padding-block: clamp(3.5rem, 9vw, 7rem);
+}
+
+.about__eyebrow {
+  color: var(--red-bright);
+}
+
+.about__statement {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: var(--step-5);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  margin-top: 0.8rem;
+  max-width: 20ch;
+  color: var(--white);
+}
+
+.about__statement mark {
+  background: none;
+  color: var(--yellow);
+  -webkit-text-stroke: 1px var(--red);
+}
+
+.about__cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.6rem, 4vw, 3rem);
+  margin-top: clamp(1.8rem, 4vw, 2.8rem);
+}
+
+@media (min-width: 820px) {
+  .about__cols {
+    grid-template-columns: 1.4fr 0.6fr;
+  }
+}
+
+.about__body {
+  max-width: 60ch;
+  font-size: var(--step-1);
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.about__aside-label {
+  color: var(--red-bright);
+  margin-bottom: 0.9rem;
+}
+
+.about__stack {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.about__stack li {
+  font-family: "JetBrains Mono", monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid oklch(0.97 0 0 / 0.3);
+  color: var(--white);
+}
+
+.about__sign {
+  font-family: "Permanent Marker", cursive;
+  color: var(--red-bright);
+  font-size: var(--step-2);
+  margin-top: clamp(1.8rem, 4vw, 2.8rem);
+  transform: rotate(-1.5deg);
+}
