@@ -1,0 +1,58 @@
+.transition {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  pointer-events: none;
+  transform: translateY(100%);
+  will-change: transform;
+}
+
+.transition[data-reduced="true"] {
+  transform: none;
+  opacity: 0;
+}
+
+.transition__paper {
+  position: absolute;
+  inset: 0;
+  background: var(--black);
+  background-image: radial-gradient(
+      oklch(0.97 0 0 / 0.06) 1.2px,
+      transparent 1.3px
+    ),
+    radial-gradient(oklch(0.58 0.22 25 / 0.14) 1.2px, transparent 1.3px);
+  background-size: 7px 7px, 11px 11px;
+  background-position: 0 0, 3px 4px;
+  display: grid;
+  place-items: center;
+  /* torn top edge */
+  clip-path: polygon(
+    0% 4%,
+    8% 1.2%,
+    16% 5%,
+    24% 2%,
+    33% 6%,
+    41% 1.4%,
+    50% 5%,
+    58% 2.2%,
+    67% 6%,
+    75% 1.2%,
+    84% 5%,
+    92% 2.4%,
+    100% 5%,
+    100% 100%,
+    0% 100%
+  );
+}
+
+.transition[data-reduced="true"] .transition__paper {
+  clip-path: none;
+}
+
+.transition__stamp {
+  font-size: clamp(4rem, 18vw, 13rem);
+  color: var(--red);
+  opacity: 0.9;
+  letter-spacing: 0.05em;
+  transform: rotate(-6deg);
+}
