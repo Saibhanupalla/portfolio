@@ -2,13 +2,10 @@ import ExtLink from "./ExtLink";
 import "./Contact.css";
 
 const LINKS = [
-  // TODO: confirm your public email
-  { label: "Email", href: "mailto:hello@saibhanupalla.dev", handle: "hello@saibhanupalla.dev" },
+  { label: "Email", href: "mailto:saibhanupalla564@gmail.com", handle: "saibhanupalla564@gmail.com" },
   { label: "GitHub", href: "https://github.com/Saibhanupalla", handle: "@Saibhanupalla" },
-  // TODO: confirm your LinkedIn URL
   { label: "LinkedIn", href: "https://linkedin.com/in/saibhanupalla", handle: "/in/saibhanupalla" },
-  // TODO: confirm or swap this platform (X / Dribbble / Read.cv ...)
-  { label: "X", href: "https://x.com/", handle: "@saibhanupalla" },
+  { label: "X", href: "https://x.com/saibhanupalla", handle: "@saibhanupalla" },
 ];
 
 export default function Contact() {
