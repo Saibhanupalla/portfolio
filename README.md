@@ -2,7 +2,7 @@
 
 A personal portfolio for **Sai Bhanupalla**, Creative AI Developer. The site itself is the work sample: an anime-manga + punk-zine aesthetic (black / yellow / red, halftone, kanji, torn collage) built for craft, motion, and speed.
 
-Live site: _add your deployed URL here once it's up_
+Live site: **https://portfolio-orcin-zeta-68.vercel.app/**
 
 ## Stack
 
