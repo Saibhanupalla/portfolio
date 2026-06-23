@@ -1,6 +1,7 @@
 .contact {
   position: relative;
   background: var(--black);
+  border-top: 2px solid var(--black-hud);
   padding-block: clamp(4rem, 11vw, 8rem);
   overflow: hidden;
 }
