@@ -4,7 +4,7 @@ import "./Contact.css";
 const LINKS = [
   { label: "Email", href: "mailto:saibhanupalla564@gmail.com", handle: "saibhanupalla564@gmail.com" },
   { label: "GitHub", href: "https://github.com/Saibhanupalla", handle: "@Saibhanupalla" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/saibhanupalla", handle: "/in/saibhanupalla" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/saibhanu-palla/", handle: "/in/saibhanu-palla" },
   { label: "X", href: "https://x.com/saibhanupalla", handle: "@saibhanupalla" },
 ];
 

@@ -19,17 +19,22 @@ export function useLinkTransition(): RunLink {
 }
 
 function openTab(href: string) {
-  const win = window.open(href, "_blank", "noopener,noreferrer");
-  if (!win) {
-    // Popup blocked - fall back to a synthetic anchor click.
-    const a = document.createElement("a");
-    a.href = href;
-    a.target = "_blank";
-    a.rel = "noopener noreferrer";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
+  // Note: passing "noopener" in the features string makes window.open return
+  // null even on success, which previously tripped the fallback and opened a
+  // second tab. Open normally, then sever the opener for security.
+  const win = window.open(href, "_blank");
+  if (win) {
+    win.opener = null;
+    return;
   }
+  // Popup blocked - fall back to a synthetic anchor click.
+  const a = document.createElement("a");
+  a.href = href;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
 }
 
 export function LinkTransitionProvider({ children }: { children: ReactNode }) {
