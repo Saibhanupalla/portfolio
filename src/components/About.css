@@ -3,10 +3,6 @@
   padding-block: clamp(3.5rem, 9vw, 7rem);
 }
 
-.about__eyebrow {
-  color: var(--red-bright);
-}
-
 .about__statement {
   font-family: "Anton", sans-serif;
   font-weight: 400;
@@ -14,7 +10,7 @@
   font-size: var(--step-5);
   line-height: 0.92;
   letter-spacing: 0.01em;
-  margin-top: 0.8rem;
+  margin-top: 0;
   max-width: 20ch;
   color: var(--white);
 }
@@ -46,6 +42,10 @@
 }
 
 .about__aside-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--red-bright);
   margin-bottom: 0.9rem;
 }

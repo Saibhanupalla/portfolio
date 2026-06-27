@@ -74,7 +74,8 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
   padding: clamp(0.9rem, 2.5vw, 1.4rem) 0.2rem;
   border-bottom: 2px solid var(--black-hud);
   transition: transform var(--dur-ui) var(--ease-out),
@@ -98,6 +99,9 @@
   font-size: var(--step--1);
   letter-spacing: 0.08em;
   color: var(--muted);
+  min-width: 0;
+  word-break: break-all;
+  text-align: right;
 }
 
 .contact__foot {
@@ -107,6 +111,12 @@
   justify-content: space-between;
   margin-top: clamp(2rem, 5vw, 3.5rem);
   color: var(--muted);
+}
+
+.contact__foot-line {
+  font-family: "Archivo", sans-serif;
+  font-size: var(--step--1);
+  letter-spacing: 0.02em;
 }
 
 @media (prefers-reduced-motion: reduce) {

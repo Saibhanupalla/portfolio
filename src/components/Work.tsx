@@ -13,6 +13,7 @@ export default function Work() {
   const reduced = usePrefersReducedMotion();
   const [[index, dir], setState] = useState<[number, number]>([0, 0]);
   const [paused, setPaused] = useState(false);
+  const [dragging, setDragging] = useState(false);
 
   const paginate = useCallback((d: number) => {
     setState(([i]) => [(i + d + N) % N, d]);
@@ -38,12 +39,14 @@ export default function Work() {
   };
 
   const onDragEnd = (_: unknown, info: PanInfo) => {
+    setDragging(false);
     const power = Math.abs(info.offset.x) + Math.abs(info.velocity.x) * 0.1;
     if (power < 70) return;
     paginate(info.offset.x < 0 ? 1 : -1);
   };
 
   const p = projects[index];
+  const slideStatus = `Slide ${index + 1} of ${N}: ${p.title}`;
 
   const variants = {
     enter: (d: number) => ({ x: reduced ? 0 : d > 0 ? "100%" : "-100%", opacity: 0 }),
@@ -56,7 +59,7 @@ export default function Work() {
       className="work"
       id="work"
       aria-roledescription="carousel"
-      aria-label="Case Studies"
+      aria-labelledby="work-heading"
       onKeyDown={onKeyDown}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
@@ -66,19 +69,24 @@ export default function Work() {
       <div className="work__inner shell">
         <header className="work__head">
           <div>
-            <span className="eyebrow">Selected Projects</span>
-            <h2 className="work__heading">Projects</h2>
+            <h2 id="work-heading" className="work__heading">
+              Projects
+            </h2>
           </div>
-          <span className="work__counter eyebrow" aria-hidden="true">
+          <span className="work__counter" aria-hidden="true">
             {String(index + 1).padStart(2, "0")} / {String(N).padStart(2, "0")}
           </span>
         </header>
+
+        <p className="sr-only" aria-live="polite" aria-atomic="true">
+          {slideStatus}
+        </p>
 
         <div className="work__viewport">
           <AnimatePresence initial={false} custom={dir} mode="popLayout">
             <motion.article
               key={p.id}
-              className="case"
+              className={`case${dragging ? " case--dragging" : ""}`}
               custom={dir}
               variants={variants}
               initial="enter"
@@ -91,14 +99,18 @@ export default function Work() {
               drag={reduced ? false : "x"}
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={0.18}
+              onDragStart={() => setDragging(true)}
               onDragEnd={onDragEnd}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={slideStatus}
             >
               <figure className="case__media">
                 <img
                   src={p.image}
                   alt={p.alt}
                   draggable={false}
-                  loading="lazy"
+                  loading="eager"
                   decoding="async"
                 />
                 <span className="case__kanji kanji-brush" aria-hidden="true">
@@ -147,19 +159,18 @@ export default function Work() {
             type="button"
             className="work__arrow"
             onClick={() => paginate(-1)}
-            aria-label="Previous case study"
+            aria-label="Previous project"
           >
             ‹
           </button>
 
-          <div className="work__dots" role="tablist" aria-label="Choose case study">
+          <div className="work__dots" role="group" aria-label="Choose project">
             {projects.map((proj, i) => (
               <button
                 key={proj.id}
                 type="button"
-                role="tab"
-                aria-selected={i === index}
-                aria-label={proj.title}
+                aria-label={`Go to ${proj.title}`}
+                aria-current={i === index ? "true" : undefined}
                 className="work__dot"
                 data-on={i === index}
                 onClick={() => goTo(i)}
@@ -169,9 +180,19 @@ export default function Work() {
 
           <button
             type="button"
+            className="work__pause"
+            aria-pressed={paused}
+            aria-label={paused ? "Resume autoplay" : "Pause autoplay"}
+            onClick={() => setPaused((v) => !v)}
+          >
+            {paused ? "Play" : "Pause"}
+          </button>
+
+          <button
+            type="button"
             className="work__arrow"
             onClick={() => paginate(1)}
-            aria-label="Next case study"
+            aria-label="Next project"
           >
             ›
           </button>

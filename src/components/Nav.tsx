@@ -7,6 +7,14 @@ const LINKS = [
   { href: "#contact", label: "Contact" },
 ];
 
+function getFocusables(root: HTMLElement) {
+  return Array.from(
+    root.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    ),
+  ).filter((el) => !el.hasAttribute("disabled"));
+}
+
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const panelId = useId();
@@ -16,15 +24,36 @@ export default function Nav() {
   useEffect(() => {
     if (!open) return;
 
+    const panel = panelRef.current;
+    if (!panel) return;
+
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setOpen(false);
         toggleRef.current?.focus();
+        return;
+      }
+
+      if (e.key !== "Tab") return;
+
+      const items = getFocusables(panel);
+      if (items.length === 0) return;
+
+      const first = items[0];
+      const last = items[items.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
       }
     };
+
     document.addEventListener("keydown", onKey);
 
-    const firstLink = panelRef.current?.querySelector<HTMLElement>("a");
+    const firstLink = getFocusables(panel)[0];
     firstLink?.focus();
 
     const prev = document.body.style.overflow;
@@ -80,6 +109,9 @@ export default function Nav() {
         className="nav__panel"
         data-open={open}
         hidden={!open}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Site menu"
       >
         <nav className="nav__panel-links" aria-label="Primary mobile">
           {LINKS.map((l) => (

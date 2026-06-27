@@ -136,3 +136,9 @@ p {
   opacity: 1;
   transition: opacity var(--dur-ui) var(--ease-out);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .site[data-revealed="true"] {
+    transition: none;
+  }
+}

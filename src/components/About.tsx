@@ -15,7 +15,6 @@ export default function About() {
   return (
     <section className="about" id="about">
       <div className="about__inner shell">
-        <span className="about__eyebrow eyebrow">About</span>
         <h2 className="about__statement">
           I build immersive AI experiences where <mark>code meets story</mark>.
         </h2>
@@ -29,7 +28,7 @@ export default function About() {
           </p>
 
           <div className="about__aside">
-            <p className="about__aside-label eyebrow">Toolkit</p>
+            <p className="about__aside-label">Toolkit</p>
             <ul className="about__stack">
               {STACK.map((s) => (
                 <li key={s}>{s}</li>

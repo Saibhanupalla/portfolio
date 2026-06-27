@@ -12,10 +12,6 @@
   margin-bottom: clamp(1.4rem, 3.5vw, 2.4rem);
 }
 
-.work__head .eyebrow {
-  color: var(--red);
-}
-
 .work__heading {
   font-family: "Anton", sans-serif;
   font-weight: 400;
@@ -30,13 +26,14 @@
 .work__counter {
   color: var(--ink);
   font-size: var(--step-1);
-  font-family: "Anton", sans-serif;
-  letter-spacing: 0.02em;
+  font-family: "JetBrains Mono", monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .work__viewport {
   position: relative;
-  height: 580px;
+  height: clamp(420px, 72vh, 580px);
   border: 3px solid var(--ink);
   box-shadow: 12px 12px 0 var(--red);
   overflow: hidden;
@@ -45,7 +42,7 @@
 
 @media (min-width: 800px) {
   .work__viewport {
-    height: 460px;
+    height: clamp(440px, 52vh, 460px);
   }
 }
 
@@ -55,6 +52,9 @@
   display: grid;
   grid-template-rows: 46% 54%;
   background: var(--black);
+}
+
+.case--dragging {
   will-change: transform;
 }
 
@@ -199,6 +199,35 @@
   color: var(--red-bright);
 }
 
+.work__pause {
+  font-family: "JetBrains Mono", monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding: 0.45rem 0.75rem;
+  border: 2px solid var(--ink);
+  min-height: 44px;
+  min-width: 44px;
+  transition: transform var(--dur-press) var(--ease-out),
+    background-color var(--dur-ui) var(--ease-out), color var(--dur-ui) var(--ease-out);
+}
+
+.work__pause:hover {
+  background: var(--ink);
+  color: var(--yellow);
+}
+
+.work__pause:active {
+  transform: scale(0.97);
+}
+
+.work__pause[aria-pressed="true"] {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+}
+
 .work__controls {
   display: flex;
   align-items: center;
@@ -261,7 +290,8 @@
 @media (prefers-reduced-motion: reduce) {
   .case__link,
   .work__arrow,
-  .work__dot {
+  .work__dot,
+  .work__pause {
     transition: none;
   }
 }

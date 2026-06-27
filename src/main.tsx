@@ -9,11 +9,9 @@ import "@fontsource/archivo/600.css";
 import "@fontsource/archivo/700.css";
 import "@fontsource/jetbrains-mono/400.css";
 import "@fontsource/jetbrains-mono/500.css";
-import "@fontsource/noto-sans-jp/500.css";
-import "@fontsource/noto-sans-jp/700.css";
-import "@fontsource/yuji-syuku/400.css";
 
 import "./styles/tokens.css";
+import "./styles/kanji-fonts.css";
 import "./styles/global.css";
 import App from "./App.tsx";
 

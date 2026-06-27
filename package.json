@@ -13,9 +13,7 @@
     "@fontsource/anton": "^5.2.7",
     "@fontsource/archivo": "^5.2.8",
     "@fontsource/jetbrains-mono": "^5.2.8",
-    "@fontsource/noto-sans-jp": "^5.2.9",
     "@fontsource/permanent-marker": "^5.2.7",
-    "@fontsource/yuji-syuku": "^5.2.7",
     "motion": "^12.40.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"

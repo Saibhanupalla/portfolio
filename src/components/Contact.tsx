@@ -35,8 +35,8 @@ export default function Contact() {
         </ul>
 
         <footer className="contact__foot">
-          <span className="eyebrow">Sai Bhanupalla / Creative AI Developer</span>
-          <span className="eyebrow">India - Available 2026</span>
+          <span className="contact__foot-line">Sai Bhanupalla / Creative AI Developer</span>
+          <span className="contact__foot-line">India - Available 2026</span>
         </footer>
       </div>
     </section>
