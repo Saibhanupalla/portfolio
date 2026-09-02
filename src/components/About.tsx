@@ -1,14 +1,14 @@
 import "./About.css";
 
 const STACK = [
-  "LLMs",
+  "LangGraph",
   "RAG",
   "FastAPI",
   "Python",
-  "React",
   "TypeScript",
   "Next.js",
-  "Motion",
+  "pgvector",
+  "GitHub Actions",
 ];
 
 export default function About() {

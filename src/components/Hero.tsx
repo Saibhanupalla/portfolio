@@ -66,8 +66,8 @@ export default function Hero() {
           variants={rise}
         >
           I build AI products with the energy of a poster and the rigor of
-          production code - LLM systems, RAG, and full-stack apps that hit hard
-          and ship fast.
+          production code — LangGraph agents, RAG pipelines, eval gates, and
+          full-stack apps that hit hard and ship fast.
         </motion.p>
       </div>
 
